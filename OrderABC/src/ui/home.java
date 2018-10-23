@@ -1,3 +1,4 @@
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,7 +13,7 @@ public class home extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
@@ -39,6 +40,12 @@ public class home extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ClickAdd(evt);
+            }
+        });
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Enter(evt);
             }
         });
 
@@ -93,20 +100,17 @@ public class home extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
     int i = 0;
-    private void ClickAdd(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClickAdd
-        
-        if(!jTextField1.equals("")){
-            
-            i++;
-            theList.add(jTextField1.getText().toUpperCase());
-            jTextField1.setText("");
-            jLabel1.setText("Añadido: " + i);
-        }
-    }//GEN-LAST:event_ClickAdd
+    private void ClickAdd(java.awt.event.ActionEvent evt) {                          
+                    
+        i++;
+        theList.add(jTextField1.getText().toUpperCase());
+        jTextField1.setText("");
+        jLabel1.setText("Añadido: " + i);
+    }                         
 
-    private void ClickOrdenar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClickOrdenar
+    private void ClickOrdenar(java.awt.event.ActionEvent evt) {                              
         jTextArea1.setText("");
         Collections.sort(theList);
         int size = theList.size();
@@ -114,16 +118,29 @@ public class home extends javax.swing.JFrame {
             
             jTextArea1.append(theList.get(a).toString() + "\n");
         }
-    }//GEN-LAST:event_ClickOrdenar
+    }                             
 
-    private void ClearClciked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearClciked
+    private void ClearClciked(java.awt.event.ActionEvent evt) {                              
         
         jTextField1.setText("");
         i = 0;
         jLabel1.setText("");
         jTextArea1.setText("");
         theList.removeAll(theList);
-    }//GEN-LAST:event_ClearClciked
+    }                             
+
+    private void Enter(java.awt.event.KeyEvent evt) {                       
+        
+        int key = evt.getKeyCode();
+        if (key == KeyEvent.VK_ENTER) {
+            
+            i++;
+            theList.add(jTextField1.getText().toUpperCase());
+            jTextField1.setText("");
+            jLabel1.setText("Añadido: " + i);
+            
+        }
+    }                      
 
     private static void listar(List theList) {
         
@@ -166,7 +183,7 @@ public class home extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -174,5 +191,5 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
